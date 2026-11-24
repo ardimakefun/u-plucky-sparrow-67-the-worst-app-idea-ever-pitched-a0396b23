@@ -9,5 +9,10 @@ if (N < 1 || N > 240 || TEXT.trim().length === 0) {
   process.exit(1);
 }
 
+if (TEXT.includes("\n")) {
+  console.error("entry must be a single line (newline found)");
+  process.exit(1);
+}
+
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", TEXT, "utf8");
